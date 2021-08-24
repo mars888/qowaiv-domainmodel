@@ -32,12 +32,18 @@ implementation of choice.
 
 Furthermore there is an option to have a base where identity and the handling of
 the events that should be published (as they do not lead to an invalid state):
-`AggregateRoot<TAggregate>`. It has an `protected abstract void AddEventsToBuffer(params object[] events)`
+`AggregateRoot<TAggregate>`. It has a `void AddEventsToBuffer(params object[] events)`
 method that has to be overridden, to achieve the persistence of the events.
 
 The other option is `AggregateRoot<TAggregate, TId>` that comes with an
 `EventBuffer<TId>`.  Events that should be persisted are added to it, and it
 can return both the committed as the uncommitted events it buffers.
+
+### Immutability
+As immutability comes with tons of benefits in DDD scenarios, the
+`AggregateRoot`&gt;TAggregate&lt;` is designed to be immutable; that is,
+if you apply all your changes via the `Apply`, and `ApplyEvents` methods
+(as you should), it will create an updated copy that represents the new state.
 
 ## Example
 A (simplified) real life example of a financial entry:
