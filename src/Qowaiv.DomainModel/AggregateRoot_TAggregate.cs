@@ -66,7 +66,7 @@ namespace Qowaiv.DomainModel
             updated.Replay(Guard.HasAny(events, nameof(events)));
 
             var result = updated.Validator.Validate(updated);
-            if(result.IsValid) { updated.AddEventsToBuffer(events); }
+            if (result.IsValid) { updated.AddEventsToBuffer(events); }
             return result;
         }
 
