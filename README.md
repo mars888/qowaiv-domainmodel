@@ -41,7 +41,7 @@ can return both the committed as the uncommitted events it buffers.
 
 ### Immutability
 As immutability comes with tons of benefits in DDD scenarios, the
-`AggregateRoot`&gt;TAggregate&lt;` is designed to be immutable; that is,
+`AggregateRoot<TAggregate>` is designed to be immutable; that is,
 if you apply all your changes via the `Apply`, and `ApplyEvents` methods
 (as you should), it will create an updated copy that represents the new state.
 
